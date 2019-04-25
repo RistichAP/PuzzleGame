@@ -23,7 +23,7 @@ namespace shabl
             ImageHeight = 480;
             ImageWidth = 240;
             int n = r.Next(1, 3);
-            WholeImageSource = String.Format(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\normal_whole{0}.jpg", n);
+            WholeImageSource = String.Format(@"Resources\normal_whole{0}.jpg", n);
             PuzzlePiece piecefirstsmall;
             piecefirstsmall = new PuzzlePieceTypeNormalSmall(String.Empty, 0, 0, String.Empty);
             int f = 0;
@@ -34,7 +34,7 @@ namespace shabl
                     f = r.Next(0, 36);
                 }
                 collection.Add(f);
-                PuzzleList.Add(piecefirstsmall.PuzzlePieceClone(String.Format(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Images\norm{0}_1_ ({1}).jpeg", n, f + 1), (f % 6) * 50, (f / 6 + 2 + 2 * (f / 12)) * 50, i.ToString()));
+                PuzzleList.Add(piecefirstsmall.PuzzlePieceClone(String.Format(@"Resources\norm{0}_1_ ({1}).jpeg", n, f + 1), (f % 6) * 50, (f / 6 + 2 + 2 * (f / 12)) * 50, i.ToString()));
             }
             collection.Clear();
             piecefirstsmall = new PuzzlePieceTypeNormalBig(String.Empty, 0, 0, String.Empty);
@@ -45,7 +45,7 @@ namespace shabl
                     f = r.Next(0, 18);
                 }
                 collection.Add(f);
-                PuzzleList.Add(piecefirstsmall.PuzzlePieceClone(String.Format(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Images\norm{0}_2_ ({1}).jpeg", n, f + 1), (f % 6) * 50, 400 * (f / 6), (i+36).ToString()));
+                PuzzleList.Add(piecefirstsmall.PuzzlePieceClone(String.Format(@"Resources\norm{0}_2_ ({1}).jpeg", n, f + 1), (f % 6) * 50, 400 * (f / 6), (i+36).ToString()));
             }
 
         }
@@ -54,7 +54,7 @@ namespace shabl
             int n = r.Next(1, 4);
             MaxCounter = 20;
             PuzzleList = new ObservableCollection<PuzzlePiece>();
-            WholeImageSource = String.Format(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\easy_whole{0}.jpeg", n);
+            WholeImageSource = String.Format(@"Resources\easy_whole{0}.jpeg", n);
             ImageHeight = 498;
             ImageWidth = 403;
             PuzzlePiece piecefirst = new PuzzlePieceTypeEasy(String.Empty, 0, 0, String.Empty);
@@ -66,7 +66,7 @@ namespace shabl
                     f = r.Next(0, 20);
                 }
                 collection.Add(f);
-                PuzzleList.Add(piecefirst.PuzzlePieceClone(String.Format(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Images\easy{0}_ ({1}).jpeg", n, f + 1), (f % 4) * 100, (f / 4) * 100, i.ToString()));
+                PuzzleList.Add(piecefirst.PuzzlePieceClone(String.Format(@"Resources\easy{0}_ ({1}).jpeg", n, f + 1), (f % 4) * 100, (f / 4) * 100, i.ToString()));
             }
         }
     }

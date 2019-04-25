@@ -26,12 +26,12 @@ namespace shabl
         public MusicPlayer()
         {
             playList = new List<Song>();
-            playList.Add(new Song(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Music\Carlos Gardel – Por Una Cabeza.mp3"));
-            playList.Add(new Song(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Music\Fabrizio Paterlini – Soffia la notte.mp3"));
-            playList.Add(new Song(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Music\Franz Liszt – Liebestraum No. 3 In A Flat Major.mp3"));
-            playList.Add(new Song(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Music\Морис Равель – Болеро.mp3"));
-            playList.Add(new Song(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Music\Моцарт – Фантазия.mp3"));
-            playList.Add(new Song(@"C:\Users\pc\Source\Repos\NewRepo\shabl\shabl\Music\Ф. Шопен – Waltz In A Minor, Op. posth..mp3"));
+            playList.Add(new Song(@"Resources\Carlos Gardel – Por Una Cabeza.mp3"));
+            playList.Add(new Song(@"Resources\Fabrizio Paterlini – Soffia la notte.mp3"));
+            playList.Add(new Song(@"Resources\Franz Liszt – Liebestraum No. 3 In A Flat Major.mp3"));
+            playList.Add(new Song(@"Resources\Морис Равель – Болеро.mp3"));
+            playList.Add(new Song(@"Resources\Моцарт – Фантазия.mp3"));
+            playList.Add(new Song(@"Resources\Ф. Шопен – Waltz In A Minor, Op. posth..mp3"));
 
         }
         public void ChangeSong()
