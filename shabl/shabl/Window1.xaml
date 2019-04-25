@@ -1,0 +1,18 @@
+﻿<Window x:Class="shabl.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Choose Difficulty"  Width="300" Background="MistyRose" SizeToContent="Height">
+    <Window.Resources>
+        <Style x:Key="buttonstyle" TargetType="Button">
+            <Setter Property="Background" Value="Honeydew"></Setter>
+            <Setter Property="Margin" Value="25, 25, 25, 20"></Setter>
+            <Setter Property="FontFamily" Value="Harrington"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <Button Style="{StaticResource buttonstyle}" Click="ChooseEasyDiff">Easy (20)</Button>
+        <Button Style="{StaticResource buttonstyle}" Click="ChooseNormalDifficulty">Normal (54)</Button>
+    </StackPanel>
+</Window>

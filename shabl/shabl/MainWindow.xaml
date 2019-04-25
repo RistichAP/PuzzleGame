@@ -1,0 +1,73 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=System" x:Class="shabl.MainWindow"
+        xmlns:puzzle="clr-namespace:shabl"     
+        Title="Bolero" x:Name="MainWindowPuzzle" SizeToContent="Height" Background="Bisque" ResizeMode="CanResize" ShowInTaskbar="True" Unloaded="WindowUnloaded" Activated="IsActivated" >
+    <Window.Resources>
+        <DrawingBrush x:Key="stripedBrush" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <GeometryDrawing Brush="BurlyWood">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup FillRule="EvenOdd">
+                            <RectangleGeometry Rect="0,0,10,10" />
+                            <PathGeometry Figures="M 0,0 L 1,0 L 1,1 L 0,1z"/>
+                            <RectangleGeometry Rect="0,0,10,10" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+        <Style TargetType="{x:Type Button}" x:Key="MenuButtonStyle">
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="MinWidth" Value="100" />
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="MaxWidth" Value="150"/>
+            <Setter Property="FontFamily" Value="Harrington, Arial"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>       
+    </Window.Resources>
+    <StackPanel x:Name="stackP">
+        <Menu Height="20" Background="BurlyWood">
+            <StackPanel Margin="0" Orientation="Horizontal">
+                <Button Style="{StaticResource MenuButtonStyle}" Content="New game" Click="ChooseDiffActive" />
+                <Button Style="{StaticResource MenuButtonStyle}" Content="Change song" Click="ChangeMusic" />
+                <Button Style="{StaticResource MenuButtonStyle}" Content="Timer" Click="StartTimer"/>
+                <Button Style="{StaticResource MenuButtonStyle}" Content="Pause" Click="Pause" ></Button>
+                <Button Style="{StaticResource MenuButtonStyle}" Content="Save my image" Visibility="{Binding Path=SaverVisibility}" Click="SaveImage" />
+                <MediaElement Width="40" LoadedBehavior="Manual" x:Name="wpfplayer" Source="{Binding Path=NowPlayingSong}" MediaEnded="ChangeSong"/>
+            </StackPanel>
+        </Menu>
+        <Label MinHeight="40" MinWidth="180" MaxHeight="60" MaxWidth="300" DockPanel.Dock="Left" Content="{Binding tlcont}"  Background="Cornsilk" x:Name="timerlabel" FontFamily="Harrington, Arial" FontSize="25" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Grid MinHeight="400" MaxHeight="555">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            <Image Grid.Column="0" Grid.Row="0" x:Name="image1" Source="{Binding Path=WholeImageSource}" Height="{Binding Path=ImageHeight}" Width="{Binding Path=ImageWidth}"/>
+            <Canvas x:Name="PuzzleCanvas" Grid.Column="1" AllowDrop="True" Background="{DynamicResource stripedBrush}" Height="{Binding Path=ImageHeight}" Width="{Binding Path=ImageWidth}" >
+                <Border BorderBrush="BurlyWood"  BorderThickness="2"  Height="{Binding Path=ImageHeight}" Width="{Binding Path=ImageWidth}"></Border>
+                <Image Source="{Binding Path=SaverImage}" Canvas.ZIndex="1"  Visibility="{Binding Path=SaverVisibility}" x:Name="SaverImage" Width="{Binding Path=ImageWidth}" Height="{Binding Path=ImageHeight}"></Image>
+            </Canvas>
+        </Grid>
+        <ListBox Name="bunchofpieces" AllowDrop="True"  BorderThickness="2" BorderBrush="BurlyWood" SelectionMode="Single" MinHeight="110" MaxHeight="170" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=PuzzleList}" Background="Beige" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Width="{Binding Path=PieceWidth}" AllowDrop="True" Tag="{Binding Path=PieceName}"  Height="{Binding Path=PieceHeight}"  MouseMove="PieceMove" MouseLeftButtonDown="PieceDrag" MouseLeftButtonUp="PieceDrop"  >
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding Path=PieceSourse}"></ImageBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Window>
